@@ -5,15 +5,15 @@
     "items": {
       "sheet": {
         "title": "📊 Univer Sheet",
-        "href": "/guides/sheet/introduction"
+        "href": "https://univer.ai/guides/sheet/introduction"
       },
       "doc": {
         "title": "📝 Univer Doc",
-        "href": "/guides/doc/introduction"
+        "href": "https://univer.ai/guides/doc/introduction"
       },
       "slide": {
         "title": "📽️ Univer Slide",
-        "href": "/guides/slide/introduction"
+        "href": "https://univer.ai/guides/slide/introduction"
       }
     }
   },
@@ -23,17 +23,16 @@
     "items": {
       "sheet": {
         "title": "📊 Univer Sheet Pro",
-        "href": "/pro/guides/sheet/introduction"
+        "href": "https://univer.ai/pro/guides/sheet/introduction"
       }
     }
-  },
-  "typedoc": {
-    "type": "page",
-    "title": "API Reference"
   },
   "blog": {
     "type": "page",
     "title": "Blog",
-    "href": "/blog/post/this-is-univer"
+    "href": "https://univer.ai/blog/post/this-is-univer"
+  },
+  "@univerjs": {
+    "display": "children"
   }
 }

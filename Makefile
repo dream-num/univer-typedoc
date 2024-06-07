@@ -30,8 +30,25 @@ endif
 	$(image_tag) \
 	--push .
 
+
+# 打包 docker 镜像到本地 Docker 服务
+build_image: create_builder
+	$(eval image_tag=-t $(REPOSITORY):latest)
+	$(CTR) buildx build \
+	--builder $(BUILDER) \
+	--platform $(OSARCH) \
+	--file Dockerfile \
+	$(image_tag) \
+	--load .
+
+# 验证本地的 docker 镜像是否工作正常
 .PHONY: test_image_run
 test_image_run: create_builder 
+	$(eval image_tag=-t $(REPOSITORY):latest)
+	$(CTR) run --rm -it -p 8001:80 $(image_tag)
+
+.PHONY: test_remote_image_run
+test_remote_image_run: create_builder 
 ifeq ($(PUSH_TAG), latest)
 	$(eval image_tag=-t $(CR)/$(NS)/$(REPOSITORY):latest)
 else

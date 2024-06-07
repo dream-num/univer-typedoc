@@ -4,7 +4,7 @@ export default {
   logo: () => {
     return (
       <span className="inline-flex items-center gap-2">
-        <img src="/images/univer.svg" alt="Univer" className="size-8" />
+        <img src="https://univer.ai/images/univer.svg" alt="Univer" className="size-8" />
         <span className="text-xl">
           Univer
         </span>
@@ -51,7 +51,7 @@ export default {
     text: () => {
       return (
         <a href={`https://github.com/dream-num/univer/releases/tag/v${pkg.version}`} target="_blank">
-          `🎉 v$
+          `🎉 v
           {pkg.version}
           {' '}
           is released. Read more →`
