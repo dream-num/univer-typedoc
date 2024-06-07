@@ -30,9 +30,6 @@ jobs:
       - name: set work dir
         run: echo "UNIVER_CLONE_ROOT=$(pwd)/submodules/univer" >> $GITHUB_ENV
 
-      - name: clone univer
-        run: pnpm clone:univer
-
       - name: Set IMAGE_TAG variable
         id: stepGetImageTag
         run: |
