@@ -1,5 +1,4 @@
 import antfu from '@antfu/eslint-config'
-import tsparser from '@typescript-eslint/parser'
 import eslintPluginReadableTailwind from 'eslint-plugin-readable-tailwind'
 
 export default antfu({

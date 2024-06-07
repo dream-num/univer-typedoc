@@ -1,0 +1,72 @@
+name: 📦 Build
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      image-tag:
+        value: ${{ jobs.build.outputs.image-tag }}
+        description: The image tag to be used for the deployment
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      image-tag: ${{ steps.stepGetImageTag.outputs.value }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: set work dir
+        run: echo "UNIVER_CLONE_ROOT=$(pwd)/submodules/univer" >> $GITHUB_ENV
+
+      - name: Set IMAGE_TAG variable
+        id: stepGetImageTag
+        run: |
+          echo "value=$(make echo_image_tag)" >> $GITHUB_OUTPUT
+
+      # Deploy to univer.ai
+      - name: Login to Aliyun Container Registry (ACR)
+        uses: aliyun/acr-login@v1
+        with:
+          login-server: univer-acr-registry.cn-shenzhen.cr.aliyuncs.com
+          region-id: cn-shenzhen
+          username: '${{ secrets.REGISTRY_USERNAME }}'
+          password: '${{ secrets.REGISTRY_PASSWORD }}'
+
+      - name: check_image_exists
+        id: check_image_exists
+        run: |
+          echo "value=$(make check_image_exists)" >> $GITHUB_OUTPUT
+
+      - name: Build
+        run: pnpm typedoc
+        if: steps.check_image_exists.outputs.value != 'true'
+
+      - name: Build
+        run: pnpm build
+        if: steps.check_image_exists.outputs.value != 'true'
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        if: steps.check_image_exists.outputs.value != 'true'
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        id: buildx
+        if: steps.check_image_exists.outputs.value != 'true'
+
+      - name: Build and Push Docker Image
+        run: |
+          make push_image -e PUSH_TAG=${{ steps.stepGetImageTag.outputs.value }} -e BUILDER=${{ steps.buildx.outputs.name }}
+        if: steps.check_image_exists.outputs.value != 'true'

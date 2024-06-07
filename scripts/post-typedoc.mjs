@@ -5,7 +5,7 @@ import URL from 'node:url'
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const typedocPath = path.resolve(__dirname, '../src/pages/typedoc')
+const typedocPath = path.resolve(__dirname, '../src/pages/')
 
 const metaJSON = {
   '@univerjs': {
