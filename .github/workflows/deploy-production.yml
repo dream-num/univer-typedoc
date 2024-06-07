@@ -1,4 +1,4 @@
-name: 📤 Deploy Staging
+name: 📤 Deploy Production
 
 on:
   workflow_dispatch:
@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           repository: dream-num/helm-chart-private
-          event-type: dispatch
+          event-type: dispatch-prod
           client-payload: '{"service":"univer-typedoc","tag":"${{ needs.build.outputs.image-tag }}"}'
 
   deploy-trigger:
@@ -39,5 +39,5 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           repository: dream-num/helm-chart-private
-          event-type: dispatch
+          event-type: dispatch-prod
           client-payload: '{"service":"univer-typedoc","tag":"${{ inputs.image-tag }}"}'
