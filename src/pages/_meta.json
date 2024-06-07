@@ -27,6 +27,10 @@
       }
     }
   },
+  "typedoc": {
+    "type": "page",
+    "title": "API Reference"
+  },
   "blog": {
     "type": "page",
     "title": "Blog",

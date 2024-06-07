@@ -51,10 +51,10 @@ export default {
     text: () => {
       return (
         <a href={`https://github.com/dream-num/univer/releases/tag/v${pkg.version}`} target="_blank">
-          `🎉 v
+          🎉 v
           {pkg.version}
           {' '}
-          is released. Read more →`
+          is released. Read more →
         </a>
       )
     },

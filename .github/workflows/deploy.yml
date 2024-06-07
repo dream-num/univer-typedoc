@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       image-tag:
-        description: The image tag to deploy
+        description: The image tag to deploy (optional, if not provided, the image will be built first)
         type: string
-        default: latest
+        default: ''
         required: false
 
 concurrency:
