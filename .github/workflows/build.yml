@@ -50,7 +50,7 @@ jobs:
           echo "value=$(make check_image_exists)" >> $GITHUB_OUTPUT
 
       - name: Build
-        run: NODE_OPTIONS=--max-old-space-size=7168 pnpm build:univer
+        run: NODE_OPTIONS=--max-old-space-size=7168 pnpm build
         if: steps.check_image_exists.outputs.value != 'true'
 
       - name: Set up QEMU
@@ -64,5 +64,5 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          PUSH_TAG=${{ steps.stepGetImageTag.outputs.value }} BUILDER=${{ steps.buildx.outputs.name }} pnpm build:univer:docker
+          make push_image -e PUSH_TAG=${{ steps.stepGetImageTag.outputs.value }} -e BUILDER=${{ steps.buildx.outputs.name }}
         if: steps.check_image_exists.outputs.value != 'true'
