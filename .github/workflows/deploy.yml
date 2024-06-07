@@ -5,6 +5,7 @@ on:
     inputs:
       image-tag:
         description: The image tag to deploy
+        type: string
         default: latest
         required: false
   push:
@@ -17,12 +18,12 @@ concurrency:
 
 jobs:
   build:
-    if: inputs.image-tag != null
+    if: inputs.image-tag != ''
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
   deploy:
-    if: inputs.image-tag != null
+    if: inputs.image-tag != ''
     runs-on: arc-runner-set
     needs: build
     steps:
@@ -34,7 +35,7 @@ jobs:
           client-payload: '{"service":"univer-typedoc","tag":"${{ needs.build.outputs.image-tag }}"}'
 
   deploy-trigger:
-    if: inputs.image-tag != null
+    if: inputs.image-tag == 'latest'
     runs-on: arc-runner-set
     steps:
       - uses: peter-evans/repository-dispatch@v2
