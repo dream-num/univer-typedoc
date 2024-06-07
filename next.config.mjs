@@ -9,6 +9,10 @@ const nextConfig = {
   output: 'standalone',
   basePath: '/typedoc',
   assetPrefix: '/typedoc/',
+  swcMinify: true,
+  experimental: {
+    mdxRs: true,
+  },
 }
 
 export default withNextra(nextConfig)

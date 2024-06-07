@@ -29,7 +29,8 @@
   },
   "typedoc": {
     "type": "page",
-    "title": "API Reference"
+    "title": "API Reference",
+    "href": "https://univer.ai/typedoc/@univerjs/README"
   },
   "blog": {
     "type": "page",
