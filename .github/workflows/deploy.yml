@@ -18,12 +18,12 @@ concurrency:
 
 jobs:
   build:
-    if: inputs.image-tag != ''
+    if: inputs.image-tag == ''
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
   deploy:
-    if: inputs.image-tag != ''
+    if: inputs.image-tag == ''
     runs-on: arc-runner-set
     needs: build
     steps:
@@ -35,7 +35,7 @@ jobs:
           client-payload: '{"service":"univer-typedoc","tag":"${{ needs.build.outputs.image-tag }}"}'
 
   deploy-trigger:
-    if: inputs.image-tag == 'latest'
+    if: inputs.image-tag != ''
     runs-on: arc-runner-set
     steps:
       - uses: peter-evans/repository-dispatch@v2
