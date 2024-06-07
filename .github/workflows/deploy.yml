@@ -2,8 +2,9 @@ name: 📤 Deploy Staging
 
 on:
   workflow_dispatch:
-  branch:
-    - ci/deploy
+  push:
+    branches:
+      - ci/deploy
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
