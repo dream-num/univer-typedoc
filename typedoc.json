@@ -1,0 +1,32 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "name": "Univer",
+  "entryPoints": ["./submodules/univer/packages/*"],
+  "entryPointStrategy": "packages",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "none",
+  "enumMembersFormat": "table",
+  "parametersFormat": "table",
+  "propertiesFormat": "table",
+  "typeDeclarationFormat": "table",
+  "indexFormat": "table",
+  "outputFileStrategy": "members",
+  "out": "./src/pages/typedoc",
+  "sourceLinkTemplate": "https://github.com/dream-num/univer/blob/main/{path}#L{line}",
+  "exclude": [
+    "**/node_modules/**",
+    "**/.pnpm/**",
+    "**/*.stories.tsx",
+    "submodules/univer/packages/debugger",
+    "submodules/univer/packages/design",
+    "submodules/univer/packages/image",
+    "submodules/univer/packages/umd"
+  ],
+  "useCodeBlocks": true,
+  "expandObjects": true,
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideBreadcrumbs": true
+}

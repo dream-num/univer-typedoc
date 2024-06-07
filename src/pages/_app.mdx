@@ -1,0 +1,33 @@
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import './globals.css'
+
+export default function App(props) {
+  const { Component, pageProps } = props
+
+  const { pathname } = useRouter()
+
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+
+    gtag('js', new Date())
+    gtag('config', 'G-RCVZZ25ZP4')
+  }, [])
+
+
+  const isProd = process.env.NODE_ENV === 'production'
+
+  return (
+    <>
+      <div >
+        <Component {...pageProps} />
+      </div>
+
+      {/* Global site tag (gtag.js) - Google Analytics */}
+      {isProd && <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCVZZ25ZP4"></script>}
+    </>
+  )
+}
