@@ -7,7 +7,7 @@
     "prepare": "simple-git-hooks",
     "typedoc": "cd submodules/univer && pnpm i && cd ../../ && node ./scripts/pre-typedoc.mjs && typedoc && node ./scripts/post-typedoc.mjs",
     "dev": "next dev",
-    "build": "NODE_OPTIONS=--max-old-space-size=10240 next build",
+    "build": "NODE_OPTIONS=--max-old-space-size=15360 next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
