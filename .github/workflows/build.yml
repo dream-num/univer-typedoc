@@ -50,7 +50,11 @@ jobs:
           echo "value=$(make check_image_exists)" >> $GITHUB_OUTPUT
 
       - name: Build
-        run: NODE_OPTIONS=--max-old-space-size=7168 pnpm build
+        run: pnpm typedoc
+        if: steps.check_image_exists.outputs.value != 'true'
+
+      - name: Build
+        run: pnpm build
         if: steps.check_image_exists.outputs.value != 'true'
 
       - name: Set up QEMU
