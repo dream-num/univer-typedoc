@@ -35,6 +35,3 @@ yarn-error.log*
 *.tsbuildinfo
 
 src/pages/typedoc
-submodules/univer/**/typedoc.json
-submodules/univer/packages/core/typedoc.json
-@univerjs

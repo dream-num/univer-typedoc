@@ -7,9 +7,9 @@ const withNextra = Nextra({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  basePath: '/typedoc',
-  assetPrefix: '/typedoc/',
+
   swcMinify: true,
+
   experimental: {
     mdxRs: true,
   },

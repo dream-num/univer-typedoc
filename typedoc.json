@@ -11,7 +11,7 @@
   "typeDeclarationFormat": "table",
   "indexFormat": "table",
   "outputFileStrategy": "members",
-  "out": "./src/pages/",
+  "out": "./src/pages/typedoc",
   "sourceLinkTemplate": "https://github.com/dream-num/univer/blob/main/{path}#L{line}",
   "exclude": [
     "**/node_modules/**",

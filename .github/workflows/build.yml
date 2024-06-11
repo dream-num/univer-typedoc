@@ -50,11 +50,9 @@ jobs:
           echo "value=$(make check_image_exists)" >> $GITHUB_OUTPUT
 
       - name: Build
-        run: pnpm typedoc
-        # if: steps.check_image_exists.outputs.value != 'true'
-
-      - name: Build
-        run: pnpm build
+        run: |
+          pnpm typedoc
+          pnpm build
         # if: steps.check_image_exists.outputs.value != 'true'
 
       - name: Set up QEMU

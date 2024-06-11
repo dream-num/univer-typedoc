@@ -36,8 +36,5 @@
     "type": "page",
     "title": "Blog",
     "href": "https://univer.ai/blog/post/this-is-univer"
-  },
-  "@univerjs": {
-    "display": "children"
   }
 }
