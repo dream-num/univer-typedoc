@@ -1,6 +1,9 @@
 name: 📤 Deploy Staging
 
 on:
+  push:
+    branches:
+      - ci/test-build
   workflow_dispatch:
     inputs:
       image-tag:
