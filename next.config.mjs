@@ -12,7 +12,6 @@ const nextConfig = {
   assetPrefix: process.env.NODE_ENV === 'production' ? '/typedoc/' : undefined,
 
   swcMinify: true,
-
   experimental: {
     mdxRs: true,
   },
