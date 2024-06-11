@@ -1,9 +1,6 @@
 name: 📤 Deploy Staging
 
 on:
-  push:
-    branches:
-      - ci/version-check
   workflow_dispatch:
     inputs:
       image-tag:
