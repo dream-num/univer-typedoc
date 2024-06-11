@@ -57,11 +57,16 @@ endif
 	$(CTR) run --rm -it -p 8001:80 $(image_tag)
 
 .PHONY: get_image_tag
+# The image version number consists of three parts 
+# 1. The short commit id of the current git repository
+# 2. The version number in the package.json file
+# 3. The short commit id of the univer repository
 get_image_tag:
 ifeq ($(UNIVER_CLONE_ROOT),)	
 	$(error UNIVER_CLONE_ROOT is not set)
 endif
-	$(eval IMAGE_TAG=$(shell cat $(UNIVER_CLONE_ROOT)/package.json | grep '"version":' | head -1 | awk -F '"' '{print $$4}'))
+	$(eval IMAGE_TAG=$(shell git rev-parse --short HEAD))
+	$(eval IMAGE_TAG=$(IMAGE_TAG)-$(shell cat $(UNIVER_CLONE_ROOT)/package.json | grep '"version":' | head -1 | awk -F '"' '{print $$4}'))
 	$(eval IMAGE_TAG=$(IMAGE_TAG)-$(shell git -C $(UNIVER_CLONE_ROOT)/ rev-parse --short HEAD))
 
 .PHONY: echo_image_tag
