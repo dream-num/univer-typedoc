@@ -1,3 +1,4 @@
+import process from 'node:process'
 import Nextra from 'nextra'
 
 const withNextra = Nextra({
@@ -7,6 +8,8 @@ const withNextra = Nextra({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/typedoc/' : undefined,
 
   swcMinify: true,
 
