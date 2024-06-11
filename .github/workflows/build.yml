@@ -60,22 +60,22 @@ jobs:
         run: |
           echo "value=$(make check_image_exists)" >> $GITHUB_OUTPUT
 
+      - name: block_if_image_exists
+        if: steps.check_image_exists.outputs.value == 'true'
+        run: echo "Image ${{ steps.stepGetImageTag.outputs.value }} already exists, skipping build, please manually trigger the deployment workflow with the existing tag"
+
       - name: Build
         run: |
           pnpm typedoc
           pnpm build
-        # if: steps.check_image_exists.outputs.value != 'true'
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-        # if: steps.check_image_exists.outputs.value != 'true'
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         id: buildx
-        # if: steps.check_image_exists.outputs.value != 'true'
 
       - name: Build and Push Docker Image
         run: |
           make push_image -e PUSH_TAG=${{ steps.stepGetImageTag.outputs.value }} -e BUILDER=${{ steps.buildx.outputs.name }}
-        # if: steps.check_image_exists.outputs.value != 'true'
