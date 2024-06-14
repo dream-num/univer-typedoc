@@ -69,6 +69,13 @@ jobs:
           pnpm typedoc
           pnpm build
 
+      - name: clean
+        run: |
+          du -h -d 1
+          rm -rf ./submodules
+          rm -rf ./.next/cache
+          du -h -d 1
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
