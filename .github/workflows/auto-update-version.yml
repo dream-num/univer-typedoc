@@ -27,15 +27,18 @@ jobs:
       - name: update version
         run: |
           sed -i 's/"version": "[^"]*"/"version": "0.1.16"/' package.json
+          git diff
           cd submodules/univer
           git checkout v${{ inputs.version}}
           git pull
+          git add *
 
       - name: UpdateRepository
         uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
             echo 'skip'
+            git diff
           COMMIT_MESSAGE: 'chore(release): v${{ inputs.version }}'
           COMMIT_NAME: GitHub Actions
           PR_BRANCH_PREFIX: chore/
