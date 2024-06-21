@@ -1,6 +1,9 @@
 name: 🎇 Update Repository
 
 on:
+  push:
+    branches:
+      - ci/update-version
   workflow_dispatch:
     inputs:
       version:
@@ -18,13 +21,17 @@ jobs:
         with:
           submodules: true
 
+      - name: update version
+        run: |
+          cd univer-typedoc/submodules/univer
+          git checkout v${{ inputs.version}}
+          git pull
+
       - name: UpdateRepository
         uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
-            npm version ${{ inputs.version }} --no-git-tag-version
-            cd univer-typedoc/submodules/univer
-            git checkout v${{ inputs.version}}
+            echo 'skip'
           COMMIT_MESSAGE: 'chore(release): v${{ inputs.version }}'
           COMMIT_NAME: GitHub Actions
           PR_BRANCH_PREFIX: create-pr-action/
