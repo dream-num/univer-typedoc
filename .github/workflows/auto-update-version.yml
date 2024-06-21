@@ -1,4 +1,4 @@
-name: 🎇 Update Repository
+name: 🎇 Sync Univer version
 
 on:
   workflow_dispatch:
