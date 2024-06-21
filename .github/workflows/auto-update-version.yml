@@ -28,7 +28,7 @@ jobs:
 
       - name: update version
         run: |
-          npm version ${{ inputs.version }} --no-git-tag-version
+          sed -i 's/"version": "[^"]*"/"version": "0.1.16"/' package.json
           cd submodules/univer
           git checkout v${{ inputs.version}}
           git pull
