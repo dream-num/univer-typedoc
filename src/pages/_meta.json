@@ -17,15 +17,15 @@
       }
     }
   },
-  "pro": {
-    "type": "menu",
-    "title": "🌟 Univer Pro",
-    "items": {
-      "sheet": {
-        "title": "📊 Univer Sheet Pro",
-        "href": "https://univer.ai/pro/guides/sheet/introduction"
-      }
-    }
+  "examples": {
+    "type": "page",
+    "title": "Examples",
+    "href": "https://univer.ai/examples"
+  },
+  "playground": {
+    "type": "page",
+    "title": "Playground",
+    "href": "https://univer.ai/playground"
   },
   "typedoc": {
     "type": "page",
