@@ -22,13 +22,14 @@ jobs:
       - name: update version
         run: |
           cd submodules/univer
+          git fetch --all
           git checkout v${{ inputs.version}}
 
       - name: UpdateRepository
         uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
-            sed -i 's/"version": "[^"]*"/"version": "0.1.16"/' package.json
+            sed -i 's/"version": "[^"]*"/"version": "${{ inputs.version }}"/' package.json
           COMMIT_MESSAGE: 'chore(release): sync univer to v${{ inputs.version }}'
           COMMIT_NAME: GitHub Actions
           PR_BRANCH_PREFIX: chore/
