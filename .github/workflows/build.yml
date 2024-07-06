@@ -73,7 +73,9 @@ jobs:
         run: |
           du -h -d 1
           rm -rf ./submodules
+          rm -rf ./.next/server
           rm -rf ./.next/cache
+          echo "Cleaned up"
           du -h -d 1
 
       - name: Set up QEMU
