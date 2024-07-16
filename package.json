@@ -13,28 +13,28 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "next": "14.2.4",
+    "next": "14.2.5",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.21.1",
-    "@eslint-react/eslint-plugin": "^1.5.18",
-    "@types/node": "^20.14.9",
+    "@antfu/eslint-config": "^2.22.3",
+    "@eslint-react/eslint-plugin": "^1.5.26",
+    "@types/node": "^20.14.10",
     "autoprefixer": "^10.4.19",
-    "eslint": "9.5.0",
+    "eslint": "^9.7.0",
     "eslint-plugin-readable-tailwind": "^1.5.2",
     "fs-extra": "^11.2.0",
     "lint-staged": "^15.2.7",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.39",
     "sharp": "^0.33.4",
     "simple-git-hooks": "^2.11.1",
-    "tailwindcss": "^3.4.4",
-    "typedoc": "^0.26.3",
-    "typedoc-plugin-markdown": "^4.1.0",
-    "typescript": "^5.5.2"
+    "tailwindcss": "^3.4.5",
+    "typedoc": "^0.26.4",
+    "typedoc-plugin-markdown": "^4.2.1",
+    "typescript": "^5.5.3"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
