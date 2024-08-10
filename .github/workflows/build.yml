@@ -14,7 +14,8 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on:
+      group: large-runner
 
     outputs:
       image-tag: ${{ steps.stepGetImageTag.outputs.value }}
